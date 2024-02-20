@@ -69,10 +69,10 @@ public class UserInterface {
     private static void displayCurrencies() {
         try {
             JSONObject exchangeRates = FileHandler.loadExchangeRatesFromFile();
-            List<String> currencies = FileHandler.showCurrencies(exchangeRates);
+            List<String> currencies = FileHandler.showCurrenciesWithRates(exchangeRates);
             System.out.println("Available currencies:");
             for (String currency : currencies) {
-                System.out.println(currency);
+                System.out.println(currency.toUpperCase());
             }
 
         } catch (IOException | ParseException e) {
