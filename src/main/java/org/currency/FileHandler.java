@@ -49,13 +49,6 @@ public class FileHandler {
             throw new IllegalArgumentException("Currency code not found");
         }
     }
-/*
-    public static List<String> showCurrencies(JSONObject exchangeRates) {
-        Set<String> currencies = exchangeRates.keySet();
-        return new ArrayList<>(currencies);
-    }
-
- */
 
     public static List<String> showCurrenciesWithRates(JSONObject exchangeRates) {
         List<String> currenciesWithRates = new ArrayList<>();
