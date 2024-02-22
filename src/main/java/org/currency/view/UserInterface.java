@@ -1,6 +1,6 @@
 package org.currency.view;
 
 public interface UserInterface {
-    void showToUser(String message);
+    void print(String message);
     String getByUser();
 }

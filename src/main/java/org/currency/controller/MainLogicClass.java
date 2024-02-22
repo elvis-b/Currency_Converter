@@ -18,16 +18,16 @@ public class MainLogicClass {
 
     public void startCurrencyConverter() {
         try {
-            userInterface.showToUser("Enter the amount to exchange: ");
+            userInterface.print("Enter the amount to exchange: ");
             double amount = Double.parseDouble(userInterface.getByUser());
 
-            userInterface.showToUser("Enter the code of the currency to exchange to (e.g., EUR): ");
+            userInterface.print("Enter the code of the currency to exchange to (e.g., EUR): ");
             String currencyCode = userInterface.getByUser();
 
             double exchangedAmount = converter.convertCurrency(amount, currencyCode);
-            userInterface.showToUser(String.format("You can buy %.2f %s for %.2f RUB\n", exchangedAmount, currencyCode, amount));
+            userInterface.print(String.format("You can buy %.2f %s for %.2f RUB\n", exchangedAmount, currencyCode, amount));
         } catch (Exception e) {
-            userInterface.showToUser("An error occurred while reading exchange rates: " + e.getMessage());
+            userInterface.print("An error occurred while reading exchange rates: " + e.getMessage());
         }
     }
 }

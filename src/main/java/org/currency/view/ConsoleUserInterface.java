@@ -10,7 +10,7 @@ public class ConsoleUserInterface implements UserInterface {
         this.scanner = scanner;
     }
 
-    public void showToUser(String message) {
+    public void print(String message) {
         System.out.print(message);
     }
 
