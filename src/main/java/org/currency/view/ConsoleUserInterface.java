@@ -6,8 +6,8 @@ public class ConsoleUserInterface implements UserInterface {
 
     private final Scanner scanner;
 
-    public ConsoleUserInterface(Scanner scanner) {
-        this.scanner = scanner;
+    public ConsoleUserInterface() {
+        this.scanner = new Scanner(System.in);
     }
 
     public void print(String message) {

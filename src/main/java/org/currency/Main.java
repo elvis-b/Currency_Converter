@@ -1,24 +1,26 @@
 package org.currency;
 
-import org.currency.controller.MainLogicClass;
-import org.currency.model.DataRetriever;
-import org.currency.model.RatesGetter;
+import org.currency.service.MainLogicClass;
+import org.currency.service.ConverterClass;
+import org.currency.model.CurrencyRate;
+import org.currency.service.RatesGetter;
+import org.currency.service.RatesGetterFromFile;
 import org.currency.view.ConsoleUserInterface;
-import java.util.Scanner;
+import org.currency.view.UserInterface;
+
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            String filePath = "exchange_rates.json";
+        String filePath = "exchange_rates.json";
 
-            DataRetriever dataRetriever = new RatesGetter(filePath);
-            ConsoleUserInterface userInterface = new ConsoleUserInterface(scanner);
-            MainLogicClass mainLogic = new MainLogicClass(dataRetriever, userInterface);
+        RatesGetter ratesGetter = new RatesGetterFromFile(filePath);
+        List<CurrencyRate> exchangeRates = ratesGetter.loadExchangeRates();
+        UserInterface userInterface = new ConsoleUserInterface();
+        ConverterClass converter = new ConverterClass();
+        MainLogicClass mainLogic = new MainLogicClass(converter, userInterface, exchangeRates);
 
-            mainLogic.startCurrencyConverter();
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-        }
+        mainLogic.startCurrencyConverter();
     }
 }
